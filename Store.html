@@ -1,0 +1,38 @@
+<html>
+ <title> Store </title>
+ 
+ <body>
+ <h1> Store </h1>
+ <style>
+ 
+	h1{ background-image:url('https://media0.giphy.com/media/2ZYKKfCr0rkvvTkdum/source.gif'); background-repeat:repeat;
+		width:100%;
+		height: 75%;
+		text-align: center;
+		font-size: 100px;
+		}
+	body{
+		background-color:gray;
+	
+	</style>
+ <form method="get" action="" id="mainForm">
+	<div>
+	<label for="numCurrency">Please enter the amount you wish to buy.(max 1000)</label><br>
+	<input type="text" id="currency" name="currency"><br>
+	<input type="submit" class="submit"><input type="reset" value="Reset Input" >
+	</div>
+	<script>
+		var max = document.getElementById("currency");
+		var click = document.getElementsByClassName("submit");
+
+		click[0].addEventListener('click',check);
+		function check(){
+		if(max.value > 1000){
+		alert("cannot exceed 1000 currency at a time");
+		e.preventDefault();
+		}
+	}
+	</script>
+</form>
+</body>
+</html>

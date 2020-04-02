@@ -1,27 +1,76 @@
 <html>
  <title> Store </title>
- 
- <body>
- <h1> Store </h1>
  <style>
- 
-	h1{ background-image:url('https://media0.giphy.com/media/2ZYKKfCr0rkvvTkdum/source.gif'); background-repeat:repeat;
-		width:100%;
-		height: 75%;
+	h1{
+		font-size: 35px;
 		text-align: center;
-		font-size: 100px;
+		height: 20%;
 		}
 	body{
-		background-color:gray;
-	
+		background-image: url("https://thumbs.dreamstime.com/t/poker-background-chips-green-cloth-32532350.jpg");
+		height= 100%;
+		width= 100%;
+		background-size: cover;
+		}
+	div.gallery{
+		float: left;
+		width: 25%;
+		height: 35%;
+	}		
+	div.desc {
+		padding: 5px;
+		text-align: bottom;	
+	}
+	form{
+		position:relative;
+		width: 1800px;
+		height: 70px;
+		text-align: center;
+	}
+	label{
+		width: 100%;
+		height: 100%;
+		font-size: 20px;
+		}
 	</style>
- <form method="get" action="" id="mainForm">
-	<div>
+ <body>
+ <h1> Store </h1>
+ 
+ 
+	<div class="gallery">
+		<a target="_blank" href="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRDWwe1lZQUwpqDXXDrZfQCugDfFRVC3QP-ee8EwPYOqKhNjUZM&usqp=CAU">
+		<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRDWwe1lZQUwpqDXXDrZfQCugDfFRVC3QP-ee8EwPYOqKhNjUZM&usqp=CAU" alt="coins" height="100" width="100">
+		</a>
+	<div class="desc">100 coins</div>
+	</div>
+	<div class="gallery">
+		<a target="_blank" href="https://cdn.clipart.email/3ab5450e98e1510b8d398cfc3b1fdb5d_stacked-coins-coin-pile-gold-png-image-and-clipart-for-free-_600-600.jpeg">
+		<img src="https://cdn.clipart.email/3ab5450e98e1510b8d398cfc3b1fdb5d_stacked-coins-coin-pile-gold-png-image-and-clipart-for-free-_600-600.jpeg" height="100" width="100">
+		</a>
+		</a>
+	<div class="desc">200 coins</div>
+	</div>
+	<div class="gallery">
+		<a target="_blank" href="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRDWwe1lZQUwpqDXXDrZfQCugDfFRVC3QP-ee8EwPYOqKhNjUZM&usqp=CAU">
+		<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRDWwe1lZQUwpqDXXDrZfQCugDfFRVC3QP-ee8EwPYOqKhNjUZM&usqp=CAU" alt="coins" height="100" width="100">
+		</a>
+	<div class="desc">300 coins</div>
+	</div>
+	<div class="gallery">
+		<a target="_blank" href="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRDWwe1lZQUwpqDXXDrZfQCugDfFRVC3QP-ee8EwPYOqKhNjUZM&usqp=CAU">
+		<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRDWwe1lZQUwpqDXXDrZfQCugDfFRVC3QP-ee8EwPYOqKhNjUZM&usqp=CAU" alt="coins" height="100" width="100">
+		</a>
+	<div class="desc">400 coins</div>
+	</div>
+	<form method="get" action="" id="mainForm">
+		
 	<label for="numCurrency">Please enter the amount you wish to buy.(max 1000)</label><br>
 	<input type="text" id="currency" name="currency"><br>
 	<input type="submit" class="submit"><input type="reset" value="Reset Input" >
-	</div>
-	<script>
+	
+</form>
+</body>
+<script>
 		var max = document.getElementById("currency");
 		var click = document.getElementsByClassName("submit");
 
@@ -33,6 +82,4 @@
 		}
 	}
 	</script>
-</form>
-</body>
 </html>

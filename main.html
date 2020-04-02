@@ -9,28 +9,31 @@
 <body>
 <div id="options">
 	<div id="create">
-		<button id="create-button" class="option"><span>Create</span></button>
+		<button id="create-button" class="option" type="submit" form="create-form">
+			<span>Create</span>
+		</button>
 		<div id="create-content" class="form-content">
-			<form method="post" action="#" class="form">
+			<form method="post" action="create.php" class="form" id="create-form">
 				<fieldset>
 					<label>
-						<input type="text" placeholder="Enter Your Name">
+						<input type="text" placeholder="Enter Your Name" name="username" id="create-name">
 					</label>
-<!--					<button type="submit">&rarr;</button>-->
 				</fieldset>
 			</form>
 		</div>
 	</div>
 
 	<div id="join">
-		<button id="join-button" class="option"><span>Join</span></button>
+		<button id="join-button" class="option" type="submit" form="join-form">
+			<span>Join</span>
+		</button>
 		<div id="join-content" class="form-content">
-			<form method="post" action="#" class="form">
+			<form method="post" action="#" class="form" id="join-form">
 				<fieldset>
 					<label>
-						<input type="text" placeholder="Enter Room Code">
+						<input type="text" placeholder="Enter Your Name" name="username" id="join-name">
+						<input type="text" placeholder="Enter Room Code" name="code" id="join-code">
 					</label>
-<!--					<button type="submit">&rarr;</button>-->
 				</fieldset>
 			</form>
 		</div>

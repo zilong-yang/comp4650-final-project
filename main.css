@@ -74,6 +74,10 @@ fieldset {
 	filter: brightness(120%);
 }
 
+#create-content {
+	background-color: #374785;
+}
+
 #join {
 	display: inline;
 }
@@ -92,6 +96,12 @@ fieldset {
 	animation-duration: 0.5s;
 }
 
+#join-content {
+	left: 50%;
+	background-color: #a8d0e6;
+	height: 100px;
+}
+
 .form-content {
 	width: 250px;
 	height: 50px;
@@ -99,15 +109,6 @@ fieldset {
 	display: none;
 	position: absolute;
 	top: 100%;
-}
-
-#create-content {
-	background-color: #374785;
-}
-
-#join-content {
-	left: 50%;
-	background-color: #a8d0e6;
 }
 
 .form {
@@ -127,13 +128,15 @@ fieldset {
 	border: 1px solid white;
 	border-radius: 0;
 	padding: 0;
-	margin: 0;
+	margin: 5px;
 
 	width: 200px;
 	height: 30px;
 
 	font-size: 16px;
 	text-align: center;
+	align-content: center;
+	align-self: center;
 }
 
 .form input:hover {

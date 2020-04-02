@@ -1,0 +1,180 @@
+body {
+	background-color: #f8e9a1;
+	font-family: Impact, serif;
+}
+
+*:focus {
+	outline: none;
+}
+
+fieldset {
+	border: none;
+}
+
+#options {
+	position: absolute;
+	display: inline-block;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.option {
+	height: 150px;
+	width: 250px;
+	border: none;
+	margin: 5px 5px 0;
+
+	font-size: 36px;
+	font-family: inherit;
+
+	transition: all 0.2s;
+	cursor: pointer;
+}
+
+.option span {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+}
+
+.option span:after {
+	position: absolute;
+	transition: 0.2s;
+}
+
+.option:hover span {
+	font-size: 50px;
+}
+
+#create {
+	display: inline;
+}
+
+#create:hover #create-content {
+	display: block;
+	animation-name: fade-in;
+	animation-duration: 0.5s;
+}
+
+#create-button {
+	display: inherit;
+	float: left;
+	background-color: #374785;
+	color: white;
+	/*transition-duration: 0.5s;*/
+}
+
+#create-button:hover {
+	filter: brightness(120%);
+}
+
+#join {
+	display: inline;
+}
+
+#join-button {
+	background-color: #a8d0e6;
+}
+
+#join-button:hover {
+	filter: brightness(110%);
+}
+
+#join:hover #join-content {
+	display: block;
+	animation-name: fade-in;
+	animation-duration: 0.5s;
+}
+
+#create-content {
+	width: 250px;
+	height: 75px;
+	margin: 0 5px 5px 5px;
+
+	display: none;
+	position: absolute;
+	top: 100%;
+
+	background-color: #374785;
+	/*box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);*/
+	z-index: 1;
+}
+
+#join-content {
+	width: 250px;
+	height: 75px;
+	margin: 0 5px 5px 5px;
+
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 50%;
+
+
+	background-color: #a8d0e6;
+	/*box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);*/
+	z-index: 1;
+}
+
+.form {
+	/*display: inherit;*/
+	width: fit-content;
+	height: auto;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.form * {
+	display: inline;
+}
+
+.form input {
+	border: 1px solid white;
+	border-radius: 0;
+	padding: 0;
+	margin: 0;
+
+	width: 80px;
+	height: 30px;
+
+	font-size: 16px;
+	/*transition-duration: 0.2s;*/
+}
+
+.form input:hover {
+	border: 1px solid red;
+}
+
+.form button {
+	border: none;
+	border-radius: 0;
+	padding: 0;
+	margin: 0;
+
+	width: 30px;
+	height: 32px;
+
+	position: relative;
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fade-out {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}

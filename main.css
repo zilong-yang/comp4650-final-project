@@ -36,16 +36,20 @@ fieldset {
 	cursor: pointer;
 	display: inline-block;
 	position: relative;
-	transition: 0.5s;
+	transition-duration: 0.5s;
 }
 
 .option span:after {
 	position: absolute;
-	transition: 0.2s;
 }
 
 .option:hover span {
-	font-size: 50px;
+	transition-duration: 0.5s;
+	transform: translateX(-5%);
+}
+
+.option:hover span:after {
+	content: "\00a0\203A";
 }
 
 #create {
@@ -88,38 +92,25 @@ fieldset {
 	animation-duration: 0.5s;
 }
 
-#create-content {
+.form-content {
 	width: 250px;
-	height: 75px;
+	height: 50px;
 	margin: 0 5px 5px 5px;
-
 	display: none;
 	position: absolute;
 	top: 100%;
+}
 
+#create-content {
 	background-color: #374785;
-	/*box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);*/
-	z-index: 1;
 }
 
 #join-content {
-	width: 250px;
-	height: 75px;
-	margin: 0 5px 5px 5px;
-
-	display: none;
-	position: absolute;
-	top: 100%;
 	left: 50%;
-
-
 	background-color: #a8d0e6;
-	/*box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);*/
-	z-index: 1;
 }
 
 .form {
-	/*display: inherit;*/
 	width: fit-content;
 	height: auto;
 	position: absolute;
@@ -138,15 +129,15 @@ fieldset {
 	padding: 0;
 	margin: 0;
 
-	width: 80px;
+	width: 200px;
 	height: 30px;
 
 	font-size: 16px;
-	/*transition-duration: 0.2s;*/
+	text-align: center;
 }
 
 .form input:hover {
-	border: 1px solid red;
+	/*border: 1px solid red;*/
 }
 
 .form button {

@@ -1,0 +1,53 @@
+body {
+    background-color: #f8e9a1;
+    font-family: "Courier New", serif;
+}
+
+*:focus {
+    outline: none;
+}
+
+fieldset {
+    border: none;
+}
+
+#window {
+    position: absolute;
+    display: inline-block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#table {
+    width: 500px;
+    height: 500px;
+    background-color: white;
+    border-collapse: collapse;
+}
+
+#table th, td {
+
+}
+
+#room-title {
+    font-size: 26px;
+    height: fit-content;
+    background-color: #a8d0e6;
+}
+
+#header {
+    height: fit-content;
+}
+
+#info {
+    vertical-align: top;
+}
+
+#control {
+    height: fit-content;
+}
+
+#control td {
+    /*border: 1px solid #374785;*/
+}

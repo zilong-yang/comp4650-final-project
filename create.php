@@ -1,35 +1,43 @@
 <?php
+session_start();
+
 require_once "util.php";
 
+//function createRoom() {
 $username = $_POST['username'];
-echo $username."<br>";
+define("ROOMS", "rooms");
+define("USERS", "users");
 
 try {
-    $dbname = "project";
-    define("TABLE", "rooms");
+    $db = getDB();
 
-    $rooms = getDB($dbname);
-
+    // get a random userID
     do {
-        $randID = rand(100000, 999999);
-        $command = concat("SELECT * FROM ", TABLE, " WHERE roomID=", $randID);
-    } while (($rooms->query($command))->rowCount() != 0);
+        $userID = rand(1000000, 9999999);
+        $command = concat("SELECT * FROM ", USERS, " WHERE userID=", $userID);
+    } while (($db->query($command))->rowCount() != 0);
 
-    $command = concat("INSERT INTO ", TABLE, " (roomID, host, password) VALUES ('",
-        $randID, "', '", $username, "', NULL);");
-    $rooms->exec($command);
+    // get a random roomID
+    do {
+        $roomID = rand(100000, 999999);
+        $command = concat("SELECT * FROM ", ROOMS, " WHERE roomID=", $roomID);
+    } while (($db->query($command))->rowCount() != 0);
 
-    $command = concat("SELECT * FROM ", TABLE);
-    $result = $rooms->query($command);
+    // insert into users
+    $command = concat("INSERT INTO ", USERS, " (userID, name, roomID) VALUES ('",
+        $userID, "', '", $username, "', '", $roomID, "');");
+    $db->exec($command);
 
-    // print available rooms
-    while ($row=$result->fetch()) {
-//        echo "loop<br>";
-        echo $row['roomID']."&emsp;".$row['host']."<br>";
-    }
+    // insert into rooms
+    $command = concat("INSERT INTO ", ROOMS, " (roomID, userID, password) VALUES ('",
+        $roomID, "', '", $userID, "', NULL);");
+    $db->exec($command);
 
-    echo "done";
+//        return $roomID;
+    $_SESSION["userID"] = $userID;
+    header("Location: room.php");
 } catch (PDOException $e) {
     echo "<h2>Error</h2>";
     die($e->getMessage());
 }
+//}

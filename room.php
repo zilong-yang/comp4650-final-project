@@ -32,7 +32,7 @@ session_start();
                 <?php
                 $users = getUsers($roomID);
                 foreach ($users as $user) {
-                    echo $user['name'];
+                    echo concat($user['name'], "<br>");
                 }
                 ?>
             </td>

@@ -14,7 +14,9 @@ try {
     }
 
     $userID = addUser($username, $roomID);
+
     $_SESSION['userID'] = $userID;
+    $_SESSION["roomID"] = $roomID;
     header("Location: room.php");
 } catch (PDOException $e) {
     die($e->getMessage());

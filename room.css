@@ -64,10 +64,6 @@ fieldset {
     border-top: 1px solid #d0d0d0;
 }
 
-#control td {
-    /*border: 1px solid #374785;*/
-}
-
 #money {
     border-bottom: 1px solid #d0d0d0;
 }
@@ -86,7 +82,7 @@ fieldset {
     transition-duration: 0.2s;
 }
 
-.player-name:hover {
-    filter: brightness(95%);
-    transition-duration: 0.2s;
-}
+/*.player-name:hover {*/
+/*    filter: brightness(95%);*/
+/*    transition-duration: 0.2s;*/
+/*}*/

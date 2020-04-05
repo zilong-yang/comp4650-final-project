@@ -10,18 +10,19 @@ session_start();
         Room
         <?php
         require_once "util.php";
-        $roomID = getRoomID($_SESSION['userID']);
-        echo $roomID;
+//        $roomID = getRoomID($_SESSION['userID']);
+        echo $_SESSION["roomID"];
         ?>
     </title>
     <link rel="stylesheet" href="room.css">
+    <script src="room.js"></script>
 </head>
 
 <body>
 <div id="window">
     <table id="table">
         <tr id="room-title">
-            <th colspan="2">Room <?php echo $roomID ?></th>
+            <th colspan="2">Room <?php echo $_SESSION['roomID'] ?></th>
         </tr>
         <tr id="header">
             <th class="players">Players</th>
@@ -30,7 +31,7 @@ session_start();
         <tr id="info">
             <td id="players-list" class="players">
                 <?php
-                $users = getUsers($roomID);
+                $users = getUsers($_SESSION["roomID"]);
                 foreach ($users as $user) {
                     echo concat("<div class='player-name'>", $user['name'], "</div>");
                 }

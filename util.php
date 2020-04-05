@@ -86,3 +86,13 @@ function addRoom($hostID, $password) {
         die($e->getMessage());
     }
 }
+
+function removeUser($userID) {
+    try {
+        $db = getDB();
+        $result = $db->exec("DELETE FROM users WHERE uesrID=$userID");
+        return $result == 0 ? false : true;
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    }
+}

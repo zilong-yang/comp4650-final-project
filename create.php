@@ -23,6 +23,7 @@ try {
     $db->exec($command);
 
     $_SESSION["userID"] = $userID;
+    $_SESSION["roomID"] = $roomID;
     header("Location: room.php");
 } catch (PDOException $e) {
     echo "<h2>Error</h2>";

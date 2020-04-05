@@ -24,19 +24,19 @@ session_start();
             <th colspan="2">Room <?php echo $roomID ?></th>
         </tr>
         <tr id="header">
-            <th>Players</th>
-            <th>Your Money:</th>
+            <th class="players">Players</th>
+            <th id="money">Your have:</th>
         </tr>
         <tr id="info">
-            <td>
+            <td id="players-list" class="players">
                 <?php
                 $users = getUsers($roomID);
                 foreach ($users as $user) {
-                    echo concat($user['name'], "<br>");
+                    echo concat("<div class='player-name'>", $user['name'], "</div>");
                 }
                 ?>
             </td>
-            <td>
+            <td id="log">
 
             </td>
         </tr>

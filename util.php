@@ -38,7 +38,7 @@ function getRoomID($userID) {
 function getUsers($roomID) {
     try {
         $db = getDB();
-        $command = concat("SELECT userID, `name` FROM users WHERE roomID=", $roomID);
+        $command = "SELECT userID, `name` FROM users WHERE roomID=$roomID";
         return $db->query($command);
     } catch (PDOException $e) {
         die($e->getMessage());
@@ -46,35 +46,43 @@ function getUsers($roomID) {
 }
 
 function addUser($name, $roomID) {
-    $db = getDB();
+    try {
+        $db = getDB();
 
-    // get a random userID
-    do {
-        $userID = rand(1000000, 9999999);
-        $command = concat("SELECT * FROM ", USERS, " WHERE userID=", $userID);
-    } while (($db->query($command))->rowCount() != 0);
+        // get a random userID
+        do {
+            $userID = rand(1000000, 9999999);
+            $command = concat("SELECT * FROM ", USERS, " WHERE userID=", $userID);
+        } while (($db->query($command))->rowCount() != 0);
 
-    // insert into users
+        // insert into users
 //    $command = concat("INSERT INTO ", USERS, " (userID, name, roomID) VALUES ('",
 //        $userID, "', '", $name, "', '", $roomID, "');");
-    $result = $db->exec("INSERT INTO users (userID, name, roomID) VALUES ('$userID', '$name', '$roomID');");
-    echo "affected rows: ".$result;
+        $result = $db->exec("INSERT INTO users (userID, name, roomID) VALUES ('$userID', '$name', '$roomID');");
+        echo "affected rows: " . $result;
 
-    return $userID;
+        return $userID;
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    }
 }
 
 function addRoom($hostID, $password) {
-    $db = getDB();
+    try {
+        $db = getDB();
 
-    do {
-        $roomID = rand(100000, 999999);
-        $command = concat("SELECT * FROM ", ROOMS, " WHERE roomID=", $roomID);
-    } while (($db->query($command))->rowCount() != 0);
+        do {
+            $roomID = rand(100000, 999999);
+            $command = concat("SELECT * FROM ", ROOMS, " WHERE roomID=", $roomID);
+        } while (($db->query($command))->rowCount() != 0);
 
-    // insert into rooms
-    $command = concat("INSERT INTO ", ROOMS, " (roomID, userID, password) VALUES ('",
-        $roomID, "', '", $hostID, "', ", $password, ");");
-    $db->exec($command);
+        // insert into rooms
+        $command = concat("INSERT INTO ", ROOMS, " (roomID, userID, password) VALUES ('",
+            $roomID, "', '", $hostID, "', ", $password, ");");
+        $db->exec($command);
 
-    return $roomID;
+        return $roomID;
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    }
 }

@@ -27,27 +27,66 @@ fieldset {
 }
 
 #table th, td {
-
+    text-align: center;
 }
 
 #room-title {
     font-size: 26px;
-    height: fit-content;
-    background-color: #a8d0e6;
+    height: 50px;
+    background-color: lightgray;
 }
 
 #header {
-    height: fit-content;
+    height: 40px;
 }
 
 #info {
     vertical-align: top;
 }
 
+#info th {
+    color: white;
+}
+
+.players {
+    /*background-color: lightcyan;*/
+    /*box-shadow: 2px 2px 1px 1px gray;*/
+    border-right: 1px solid #d0d0d0;
+}
+
+#players-list {
+    text-align: center;
+    overflow: scroll;
+}
+
 #control {
-    height: fit-content;
+    height: 40px;
+    border-top: 1px solid #d0d0d0;
 }
 
 #control td {
     /*border: 1px solid #374785;*/
+}
+
+#money {
+    border-bottom: 1px solid #d0d0d0;
+}
+
+#log {
+    background-color: #f1f1f1;
+    overflow: scroll;
+}
+
+.player-name {
+    border-radius: 5px;
+    background-color: #d0e0ff;
+    margin: 3px;
+    padding: 3px;
+
+    transition-duration: 0.2s;
+}
+
+.player-name:hover {
+    filter: brightness(95%);
+    transition-duration: 0.2s;
 }

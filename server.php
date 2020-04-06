@@ -1,17 +1,16 @@
 <?php
+require_once "config.php";
 require_once "util.php";
 
 session_start();
 error_reporting(E_ALL);
 set_time_limit(0);
 ob_implicit_flush();
-
-$host = "192.168.1.10";
-$port = "8000";
+ignore_user_abort(true);
 
 $server = socket_create(AF_INET, SOCK_STREAM, SOL_TCP) or die("Server: Failed to creat socket");
 echo "socket_create() success\n";
-$result = socket_bind($server, $host, $port) or die("Server: Failed to bind to socket");
+$result = socket_bind($server, SERVER_IP, PORT) or die("Server: Failed to bind to socket");
 echo "socket_bind() success\n";
 $listen = socket_listen($server, 5) or die("Server: Failed to listen");
 echo "socket_listen success\n";
@@ -36,10 +35,22 @@ do {
             $msg = "$userID $roomID";
             socket_write($client, $msg, strlen($msg));
             echo "Send: '$msg'\n";
+        } elseif ($parts[0] === "update") {
+            if ($parts[1] === "players") {
+                $users = getUsers($parts[2]);
+                $msg = '';
+                while ($row=$users->fetch()) {
+                    $msg .= concat("<div class='player-name'>", $row['name'], "</div>");
+                }
+                socket_write($client, $msg, strlen($msg));
+                echo "Send: player list in HTML format\n";
+            } else {
+                die("Unknown message: $recv\n");
+            }
         } elseif ($parts[0] === "quit") {
             break;
         } else {
-            die("Unknown message: $recv");
+            die("Unknown message: $recv\n");
         }
     } while (true);
 

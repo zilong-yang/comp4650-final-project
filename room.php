@@ -1,8 +1,13 @@
 <?php
 session_start();
+
+require_once "config.php";
+
 error_reporting(E_ALL);
 set_time_limit(0);
 
+$server = socket_create(AF_INET, SOCK_STREAM, SOL_TCP) or die("socket_create() failed");
+socket_connect($server, SERVER_IP, PORT) or die("socket_connect() failed");
 ?>
 
 <!DOCTYPE html>
@@ -14,12 +19,12 @@ set_time_limit(0);
         <?php
         require_once "util.php";
         $roomID = getRoomID($_SESSION['userID']);
-//        echo $_SESSION["roomID"];
+        //        echo $_SESSION["roomID"];
         echo $roomID;
         ?>
     </title>
     <link rel="stylesheet" href="room.css">
-    <script src="room.js"></script>
+    <!--    <script src="room.js"></script>-->
 </head>
 
 <body>
@@ -35,10 +40,21 @@ set_time_limit(0);
         <tr id="info">
             <td id="players-list" class="players">
                 <?php
-                $users = getUsers($_SESSION["roomID"]);
-                foreach ($users as $user) {
-                    echo concat("<div class='player-name'>", $user['name'], "</div>");
-                }
+                //                $users = getUsers($_SESSION["roomID"]);
+                //                foreach ($users as $user) {
+                //                    echo concat("<div class='player-name'>", $user['name'], "</div>");
+                //                }
+
+                //                while (true) {
+                $msg = "update players $roomID";
+                socket_write($server, $msg, strlen($msg));
+                $recv = socket_read($server, 8192);
+                echo $recv;
+                $msg = "quit";
+                socket_write($server, $msg, strlen($msg));
+                //                    socket_read($server, 8192);
+
+                //                }
                 ?>
             </td>
             <td id="log">

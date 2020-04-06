@@ -5,3 +5,5 @@ define("DBPASS", "");
 define("DBNAME", "project");
 define("ROOMS", "rooms");
 define("USERS", "users");
+define("SERVER_IP", "192.168.1.10");
+define("PORT", 8000);

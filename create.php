@@ -11,7 +11,7 @@ set_time_limit(0);
 $server = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 if ($server === false)
     die(socket_strerror(socket_last_error()));
-if (socket_connect($server, "192.168.1.10", 8000) === false)
+if (socket_connect($server, SERVER_IP, PORT) === false)
     die(socket_strerror(socket_last_error()));
 
 $username = $_POST['username'];

@@ -1,5 +1,8 @@
 <?php
 session_start();
+error_reporting(E_ALL);
+set_time_limit(0);
+
 ?>
 
 <!DOCTYPE html>
@@ -10,8 +13,9 @@ session_start();
         Room
         <?php
         require_once "util.php";
-//        $roomID = getRoomID($_SESSION['userID']);
-        echo $_SESSION["roomID"];
+        $roomID = getRoomID($_SESSION['userID']);
+//        echo $_SESSION["roomID"];
+        echo $roomID;
         ?>
     </title>
     <link rel="stylesheet" href="room.css">

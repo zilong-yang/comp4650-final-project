@@ -21,8 +21,10 @@ function concat(...$args) {
 function getRoomID($userID) {
     try {
         $db = getDB();
-        $command = concat("SELECT roomID FROM users WHERE userID=", $userID);
+        $users = USERS;
+        $command = concat("SELECT roomID FROM $users WHERE userID=", $userID);
         $result = $db->query($command);
+
         if ($result->rowCount() == 0) {
             die("getRoomID: roomID Not Found");
         } elseif ($result->rowCount() > 1) {
@@ -38,7 +40,8 @@ function getRoomID($userID) {
 function getUsers($roomID) {
     try {
         $db = getDB();
-        $command = "SELECT userID, `name` FROM users WHERE roomID=$roomID";
+        $users = USERS;
+        $command = "SELECT userID, `name` FROM $users WHERE roomID=$roomID";
         return $db->query($command);
     } catch (PDOException $e) {
         die($e->getMessage());
@@ -48,18 +51,20 @@ function getUsers($roomID) {
 function addUser($name, $roomID) {
     try {
         $db = getDB();
+        $users = USERS;
 
         // get a random userID
         do {
             $userID = rand(1000000, 9999999);
-            $command = concat("SELECT * FROM ", USERS, " WHERE userID=", $userID);
+            $command = concat("SELECT * FROM $users WHERE userID=", $userID);
         } while (($db->query($command))->rowCount() != 0);
 
         // insert into users
-//    $command = concat("INSERT INTO ", USERS, " (userID, name, roomID) VALUES ('",
-//        $userID, "', '", $name, "', '", $roomID, "');");
-        $result = $db->exec("INSERT INTO users (userID, name, roomID) VALUES ('$userID', '$name', '$roomID');");
-        echo "affected rows: " . $result;
+        $result = $db->exec("INSERT INTO $users (userID, `name`, roomID) VALUES ('$userID', '$name', '$roomID');");
+        if ($result !== 1) {
+            die("addUser(): Error adding user");
+        }
+//        echo "affected rows: " . $result;
 
         return $userID;
     } catch (PDOException $e) {
@@ -67,19 +72,22 @@ function addUser($name, $roomID) {
     }
 }
 
-function addRoom($hostID, $password) {
+function addRoom() {
     try {
         $db = getDB();
+        $rooms = ROOMS;
 
         do {
             $roomID = rand(100000, 999999);
-            $command = concat("SELECT * FROM ", ROOMS, " WHERE roomID=", $roomID);
+            $command = concat("SELECT * FROM $rooms WHERE roomID=", $roomID);
         } while (($db->query($command))->rowCount() != 0);
 
         // insert into rooms
-        $command = concat("INSERT INTO ", ROOMS, " (roomID, userID, password) VALUES ('",
-            $roomID, "', '", $hostID, "', ", $password, ");");
-        $db->exec($command);
+        $command = "INSERT INTO $rooms (roomID, password) VALUES ('$roomID', NULL)";
+        $result = $db->exec($command);
+        if ($result !== 1) {
+            die("addRoom(): Error adding room");
+        }
 
         return $roomID;
     } catch (PDOException $e) {
@@ -90,7 +98,8 @@ function addRoom($hostID, $password) {
 function removeUser($userID) {
     try {
         $db = getDB();
-        $result = $db->exec("DELETE FROM users WHERE uesrID=$userID");
+        $users = USERS;
+        $result = $db->exec("DELETE FROM $users WHERE uesrID=$userID");
         return $result == 0 ? false : true;
     } catch (PDOException $e) {
         die($e->getMessage());

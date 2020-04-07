@@ -31,10 +31,10 @@ session_start();
         <tr id="info">
             <td id="players-list" class="players">
                 <?php
-                $users = getUsers($_SESSION["roomID"]);
-                foreach ($users as $user) {
-                    echo concat("<div class='player-name'>", $user['name'], "</div>");
-                }
+//                $users = getUsers($_SESSION["roomID"]);
+//                foreach ($users as $user) {
+//                    echo concat("<div class='player-name'>", $user['name'], "</div>");
+//                }
                 ?>
             </td>
             <td id="log">

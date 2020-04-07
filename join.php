@@ -6,6 +6,8 @@ require_once "util.php";
 
 $username = $_POST['username'];
 $roomID = $_POST['code'];
+$user = USERS;
+$rooms = ROOMS;
 
 try {
     // check if roomID exists

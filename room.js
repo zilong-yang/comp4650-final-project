@@ -1,4 +1,4 @@
-window.onload = function () {
+/*window.onload = function () {
     setInterval(init, 1000);
 
     function init() {
@@ -12,7 +12,7 @@ window.onload = function () {
         xmlHttp.open("GET", "current_players.php", true);
         xmlHttp.send();
     }
-}
+}*/
 
 /*
 window.onbeforeunload = function () {
@@ -26,3 +26,14 @@ window.onbeforeunload = function () {
     xmlHttp.send();
 }
 */
+
+window.onload = function () {
+    if (typeof(EventSource) !== "undefined") {
+        let source = new EventSource("server.php");
+        source.onmessage = function (event) {
+            document.getElementById("players-list").innerHTML = event.data;
+        };
+    } else {
+        alert("Browser does not support EventSource");
+    }
+}

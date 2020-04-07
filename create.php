@@ -5,6 +5,8 @@ require_once "config.php";
 require_once "util.php";
 
 $username = $_POST['username'];
+$user = USERS;
+$rooms = ROOMS;
 
 try {
     $db = getDB();
@@ -12,14 +14,13 @@ try {
     // get a random roomID
     do {
         $roomID = rand(100000, 999999);
-        $command = concat("SELECT * FROM ", ROOMS, " WHERE roomID=", $roomID);
+        $command = concat("SELECT * FROM $rooms WHERE roomID=$roomID");
     } while (($db->query($command))->rowCount() != 0);
 
     $userID = addUser($username, $roomID);
 
     // insert into rooms
-    $command = concat("INSERT INTO ", ROOMS, " (roomID, userID, password) VALUES ('",
-        $roomID, "', '", $userID, "', NULL);");
+    $command = concat("INSERT INTO $rooms (roomID, password) VALUES ($roomID, NULL)");
     $db->exec($command);
 
     $_SESSION["userID"] = $userID;

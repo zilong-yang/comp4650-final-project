@@ -67,18 +67,18 @@ function addUser($name, $roomID) {
     }
 }
 
-function addRoom($hostID, $password) {
+function addRoom() {
     try {
         $db = getDB();
+        $rooms = ROOMS;
 
         do {
             $roomID = rand(100000, 999999);
-            $command = concat("SELECT * FROM ", ROOMS, " WHERE roomID=", $roomID);
+            $command = concat("SELECT * FROM $rooms WHERE roomID=", $roomID);
         } while (($db->query($command))->rowCount() != 0);
 
         // insert into rooms
-        $command = concat("INSERT INTO ", ROOMS, " (roomID, userID, password) VALUES ('",
-            $roomID, "', '", $hostID, "', ", $password, ");");
+        $command = concat("INSERT INTO $rooms (roomID, password) VALUES ($roomID, NULL)");
         $db->exec($command);
 
         return $roomID;

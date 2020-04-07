@@ -10,7 +10,6 @@ session_start();
         Room
         <?php
         require_once "util.php";
-//        $roomID = getRoomID($_SESSION['userID']);
         echo $_SESSION["roomID"];
         ?>
     </title>
@@ -31,25 +30,21 @@ session_start();
         <tr id="info">
             <td id="players-list" class="players">
                 <?php
-//                $users = getUsers($_SESSION["roomID"]);
-//                foreach ($users as $user) {
-//                    echo concat("<div class='player-name'>", $user['name'], "</div>");
-//                }
+                include "current_players.php";
                 ?>
             </td>
             <td id="log">
-
             </td>
         </tr>
         <tr id="control">
             <td>Your bid:</td>
             <td>
-                <form>
+                <form id="bid-form" method="POST" action="#">
                     <fieldset>
                         <label>
-                            <input type="text">
+                            <input type="text" id="bid-input">
                         </label>
-                        <button type="submit">Bid</button>
+                        <button type="submit" id="bid-button">Bid</button>
                     </fieldset>
                 </form>
             </td>

@@ -20,7 +20,7 @@ fieldset {
 }
 
 #table {
-    width: 500px;
+    width: 600px;
     height: 500px;
     background-color: white;
     border-collapse: collapse;
@@ -49,14 +49,16 @@ fieldset {
 }
 
 .players {
-    /*background-color: lightcyan;*/
-    /*box-shadow: 2px 2px 1px 1px gray;*/
     border-right: 1px solid #d0d0d0;
 }
 
 #players-list {
     text-align: center;
     overflow: scroll;
+}
+
+#players-list .player-name::selection {
+    background: rgba(255, 255, 255, 0);
 }
 
 #control {
@@ -71,6 +73,23 @@ fieldset {
 #log {
     background-color: #f1f1f1;
     overflow: scroll;
+    padding: 10px;
+}
+
+#log .message {
+    margin: 3px;
+    border-radius: 3px;
+    background-color: white;
+    color: black;
+    font-size: 12px;
+}
+
+#log .message::selection {
+    background: rgba(255, 255, 255, 0);
+}
+
+#log .error {
+    color: red;
 }
 
 .player-name {
@@ -81,8 +100,3 @@ fieldset {
 
     transition-duration: 0.2s;
 }
-
-/*.player-name:hover {*/
-/*    filter: brightness(95%);*/
-/*    transition-duration: 0.2s;*/
-/*}*/

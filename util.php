@@ -78,7 +78,8 @@ function addRoom() {
         } while (($db->query($command))->rowCount() != 0);
 
         // insert into rooms
-        $command = concat("INSERT INTO $rooms (roomID, password) VALUES ($roomID, NULL)");
+        $fileName = $roomID . ".txt";
+        $command = concat("INSERT INTO $rooms (roomID, password, history) VALUES ('$roomID', NULL, '$fileName')");
         $db->exec($command);
 
         return $roomID;

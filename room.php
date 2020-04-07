@@ -1,5 +1,8 @@
 <?php
 session_start();
+
+$file_name = $_SESSION['roomID'] . ".txt";
+fopen($file_name, "w");
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +24,7 @@ session_start();
 <div id="window">
     <table id="table">
         <tr id="room-title">
-            <th colspan="2">Room <?php echo $_SESSION['roomID'] ?></th>
+            <th colspan="2">Room <span id="room-id"><?php echo $_SESSION['roomID'] ?></span></th>
         </tr>
         <tr id="header">
             <th class="players">Players</th>
@@ -39,14 +42,10 @@ session_start();
         <tr id="control">
             <td>Your bid:</td>
             <td>
-                <form id="bid-form" method="POST" action="#">
-                    <fieldset>
-                        <label>
-                            <input type="text" id="bid-input">
-                        </label>
-                        <button type="submit" id="bid-button">Bid</button>
-                    </fieldset>
-                </form>
+                <label>
+                    <input type="text" id="bid-input">
+                </label>
+                <button type="submit" id="bid-button">Bid</button>
             </td>
         </tr>
     </table>

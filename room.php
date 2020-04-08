@@ -21,7 +21,7 @@ $file_name = $_SESSION['roomID'] . ".txt";
 
 <body>
 <p id="test"></p>
-<div id="window">
+<div id="window" class="center">
     <table id="table">
         <tr id="room-title">
             <th colspan="2">Room <span id="room-id"><?php echo $_SESSION['roomID'] ?></span></th>
@@ -48,5 +48,8 @@ $file_name = $_SESSION['roomID'] . ".txt";
         </tr>
     </table>
 </div>
+
+<div class="center error" id="error-empty">Please enter your bid</div>
+<div class="center error" id="error-invalid">Please enter numbers only</div>
 </body>
 </html>

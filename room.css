@@ -11,7 +11,7 @@ fieldset {
     border: none;
 }
 
-#window {
+.center {
     position: absolute;
     display: inline-block;
     top: 50%;
@@ -89,10 +89,6 @@ fieldset {
     background: rgba(255, 255, 255, 0);
 }
 
-#log .error {
-    color: red;
-}
-
 .player-name {
     border-radius: 5px;
     background-color: #d0e0ff;
@@ -100,4 +96,28 @@ fieldset {
     padding: 3px;
 
     transition-duration: 0.2s;
+}
+
+#bid-button {
+    border-radius: 2px;
+    box-shadow: none;
+    border: none;
+    padding: 3px;
+    background-color: #a8d0e6;
+    width: 50px;
+
+    transition-duration: 0.3s;
+}
+
+#bid-button:hover {
+    filter: brightness(90%);
+    transition-duration: 0.3s;
+}
+
+.error {
+    background-color: pink;
+    opacity: 0.8;
+    border-radius: 5px;
+    color: black;
+    padding: 10px;
 }

@@ -1,4 +1,6 @@
 $(function () {
+    $(".error").hide();
+
     if (typeof (EventSource) === "undefined") {
         throw new Error("Browser doe snot support EventSource");
     }
@@ -17,14 +19,17 @@ $(function () {
     }
 
     $("#bid-button").on("click", function () {
-        let bid = $("#bid-input").val();
+        let bidInput = $("#bid-input");
+        let bid = bidInput.val();
         let msg;
         if (bid.length === 0) {
-            msg = "<div class='message error'>Please enter your bid</div>";
-            $("#log").append(msg);
+            let error = $("#error-empty");
+            error.fadeIn(300);
+            error.fadeOut(3000);
         } else if (isNaN(bid)) {
-            msg = "<div class='message error'>Please enter numbers only</div>";
-            $("#log").append(msg);
+            let error = $("#error-invalid");
+            error.fadeIn(300);
+            error.fadeOut(3000);
         } else {
             msg = "<div class='message'>You bid " + bid + "</div>";
             $.post(
@@ -35,6 +40,8 @@ $(function () {
             );
             $("#log").append(msg);
         }
+
+        bidInput.val("");
     })
 
     // $("#test").text("jQuery test");

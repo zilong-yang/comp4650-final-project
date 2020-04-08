@@ -13,4 +13,5 @@ $userID = addUser($username, $roomID);
 
 $_SESSION["userID"] = $userID;
 $_SESSION["roomID"] = $roomID;
+fopen($roomID.'.txt', 'w');
 header("Location: room.php");

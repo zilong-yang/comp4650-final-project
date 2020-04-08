@@ -56,10 +56,8 @@ function addUser($name, $roomID) {
         } while (($db->query($command))->rowCount() != 0);
 
         // insert into users
-//    $command = concat("INSERT INTO ", USERS, " (userID, name, roomID) VALUES ('",
-//        $userID, "', '", $name, "', '", $roomID, "');");
-        $result = $db->exec("INSERT INTO users (userID, name, roomID) VALUES ('$userID', '$name', '$roomID');");
-        echo "affected rows: " . $result;
+        $command = "INSERT INTO users (userID, name, roomID) VALUES ('$userID', '$name', '$roomID')";
+        $result = $db->exec($command) or die(implode(" ", $db->errorInfo()));
 
         return $userID;
     } catch (PDOException $e) {
@@ -79,8 +77,8 @@ function addRoom() {
 
         // insert into rooms
         $fileName = $roomID . ".txt";
-        $command = concat("INSERT INTO $rooms (roomID, password, history) VALUES ('$roomID', NULL, '$fileName')");
-        $db->exec($command);
+        $command = "INSERT INTO $rooms (roomID, history) VALUES ('$roomID', '$fileName')";
+        $result = $db->exec($command) or die(implode(" ", $db->errorInfo()));
 
         return $roomID;
     } catch (PDOException $e) {

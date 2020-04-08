@@ -2,7 +2,6 @@
 session_start();
 
 $file_name = $_SESSION['roomID'] . ".txt";
-fopen($file_name, "w");
 ?>
 
 <!DOCTYPE html>
@@ -17,10 +16,12 @@ fopen($file_name, "w");
         ?>
     </title>
     <link rel="stylesheet" href="room.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script src="room.js"></script>
 </head>
 
 <body>
+<p id="test"></p>
 <div id="window">
     <table id="table">
         <tr id="room-title">
@@ -32,9 +33,6 @@ fopen($file_name, "w");
         </tr>
         <tr id="info">
             <td id="players-list" class="players">
-                <?php
-                include "current_players.php";
-                ?>
             </td>
             <td id="log">
             </td>

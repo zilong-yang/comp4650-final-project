@@ -72,8 +72,8 @@ fieldset {
 
 #log {
     background-color: #f1f1f1;
-    /* todo make scroll*/
-    overflow: scroll;
+    height: 370px;
+    overflow: auto;
     padding: 10px;
 }
 

@@ -8,6 +8,14 @@ $(function () {
         $("#players-list").html(event.data);
     };
 
+    let sse_history = new EventSource("read_history.php");
+    sse_history.onmessage = function (event) {
+        let log = event.data.toString();
+        if (log !== "<br />") {
+            $("#log").html(event.data);
+        }
+    }
+
     $("#bid-button").on("click", function () {
         let bid = $("#bid-input").val();
         let msg;
@@ -23,23 +31,11 @@ $(function () {
                 "update_history.php",
                 {
                     message: msg
-                },
-                function (data) {
-                    alert(data.toString());
                 }
             );
             $("#log").append(msg);
         }
     })
-
-
-    let sse_history = new EventSource("read_history.php");
-    sse_history.onmessage = function (event) {
-        let log = event.data.toString();
-        if (log !== "<br />") {
-            $("#log").html(event.data);
-        }
-    }
 
     // $("#test").text("jQuery test");
 });

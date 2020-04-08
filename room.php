@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 $file_name = $_SESSION['roomID'] . ".txt";
 ?>
 
@@ -43,7 +42,8 @@ $file_name = $_SESSION['roomID'] . ".txt";
                 <label>
                     <input type="text" id="bid-input">
                 </label>
-                <button type="submit" id="bid-button">Bid</button>
+                <button id="bid-button">Bid</button>
+<!--                <button id="clear-button">Clear Log</button>-->
             </td>
         </tr>
     </table>

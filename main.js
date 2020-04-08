@@ -42,13 +42,11 @@ $(function () {
     let join = $("#join-button");
     join.click(function (event) {
         let username = $("#join-name").val();
+        let code = $("#join-code").val();
         if (username.length === 0) {
             event.preventDefault();
             fadeInOut($("#error-empty-name"));
-        }
-
-        let code = $("#join-code").val();
-        if (code.length !== 6 || isNaN(code)) {
+        } else if (code.length !== 6 || isNaN(code)) {
             event.preventDefault();
             fadeInOut($("#error-invalid-code"));
         }

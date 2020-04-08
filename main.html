@@ -4,10 +4,11 @@
 	<meta charset="UTF-8">
 	<title>Main Page</title>
 	<link rel="stylesheet" href="main.css">
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 	<script src="main.js"></script>
 </head>
 <body>
-<div id="options">
+<div id="options" class="center">
 	<div id="create">
 		<button id="create-button" class="option" type="submit" form="create-form">
 			<span>Create</span>
@@ -39,5 +40,8 @@
 		</div>
 	</div>
 </div>
+
+<div class="top-center error" id="error-empty-name">Please enter a name</div>
+<div class="top-center error" id="error-invalid-code">Please enter a valid room code</div>
 </body>
 </html>

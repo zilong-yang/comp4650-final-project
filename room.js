@@ -24,12 +24,10 @@ $(function () {
         let msg;
         if (bid.length === 0) {
             let error = $("#error-empty");
-            error.fadeIn(300);
-            error.fadeOut(3000);
+            fadeInOut(error);
         } else if (isNaN(bid)) {
             let error = $("#error-invalid");
-            error.fadeIn(300);
-            error.fadeOut(3000);
+            fadeInOut(error);
         } else {
             msg = "<div class='message'>You bid " + bid + "</div>";
             $.post(
@@ -46,3 +44,13 @@ $(function () {
 
     // $("#test").text("jQuery test");
 });
+
+function fadeInOut(element) {
+    if (!element.is(':animated')) {
+        element.fadeIn(300);
+        element.fadeOut(3000);
+    } else {
+        element.stop();
+        fadeInOut(element);
+    }
+}

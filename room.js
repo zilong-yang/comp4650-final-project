@@ -29,7 +29,8 @@ $(function () {
             let error = $("#error-invalid");
             fadeInOut(error);
         } else {
-            msg = "<div class='message'>You bid " + bid + "</div>";
+            let username = $("#username").text();
+            msg = "<div class='message'>" + username + " bid " + bid + "</div>";
             $.post(
                 "update_history.php",
                 {

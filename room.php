@@ -21,6 +21,8 @@ $file_name = $_SESSION['roomID'] . ".txt";
 
 <body>
 <p id="test"></p>
+<span class="hidden" id="username"><?php echo $_SESSION['username'] ?></span>
+
 <div id="window" class="center">
     <table id="table">
         <tr id="room-title">

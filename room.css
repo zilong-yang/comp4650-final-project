@@ -121,3 +121,7 @@ fieldset {
     color: black;
     padding: 10px;
 }
+
+.hidden {
+    visibility: hidden;
+}

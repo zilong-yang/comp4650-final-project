@@ -16,6 +16,7 @@ if (getUsers($roomID)->rowCount() == 0) {
 
 $userID = addUser($username, $roomID);
 
+$_SESSION['username'] = $username;
 $_SESSION['userID'] = $userID;
 $_SESSION["roomID"] = $roomID;
 header("Location: room.php");
